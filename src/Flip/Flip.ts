@@ -270,8 +270,11 @@ export class Flip {
 
         const y = this.calc.getCorner() === FlipCorner.BOTTOM ? rect.height : 0;
 
-        if (pos.x <= 0) this.animateFlippingTo(pos, { x: -rect.pageWidth, y }, true);
-        else this.animateFlippingTo(pos, { x: rect.pageWidth, y }, false);
+        if (pos.x <= rect.pageWidth * 0.50) {
+            this.animateFlippingTo(pos, { x: -rect.pageWidth, y }, true);
+        } else {
+            this.animateFlippingTo(pos, { x: rect.pageWidth, y }, false);
+        }
     }
 
     /**
@@ -341,9 +344,14 @@ export class Flip {
 
         const duration = this.getAnimationDuration(points.length);
 
+        console.log("Duration", duration);
+
         this.render.startAnimation(frames, duration, () => {
-            // callback function
             if (!this.calc) return;
+
+            console.log("isTurned", isTurned);
+            console.log("needReset", needReset);
+            console.log("this.calc", JSON.stringify(this.calc));
 
             if (isTurned) {
                 if (this.calc.getDirection() === FlipDirection.BACK) this.app.turnToPrevPage();

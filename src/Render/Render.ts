@@ -398,7 +398,7 @@ export abstract class Render {
         if (page !== null)
             page.setOrientation(
                 this.direction === FlipDirection.FORWARD &&
-                    this.orientation !== Orientation.PORTRAIT
+                this.orientation !== Orientation.PORTRAIT
                     ? PageOrientation.LEFT
                     : PageOrientation.RIGHT
             );

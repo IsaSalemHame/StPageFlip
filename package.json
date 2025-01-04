@@ -1,7 +1,15 @@
 {
   "name": "page-flip",
   "version": "2.0.7",
-  "main": "dist/js/page-flip.browser.js",
+  "module": "dist/js/page-flip.module.js",
+  "types": "dist/js/page-flip.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/js/page-flip.module.js",
+      "require": "./dist/js/page-flip.browser.js",
+      "types": "./dist/js/page-flip.d.ts"
+    }
+  },
   "browser": "dist/js/page-flip.browser.js",
   "author": "oleg.litovski9@gmail.com",
   "license": "MIT",
